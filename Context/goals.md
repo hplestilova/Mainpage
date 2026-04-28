@@ -1,23 +1,30 @@
 # Cíle
 
-## Dlouhodobá vize (3–5 let)
-_(kde chceš být)_
+## Dlouhodobá vize
+Být uznávanou expertkou na digitální transformaci ve farmaceutickém marketingu — propojovat compliance, kreativitu a technologii do funkčních omnichannel kampaní.
 
-## Roční cíle
-_(co chceš letos dosáhnout)_
+## Profesní cíle
 
-## Kvartální priority
-**Q1:**
-**Q2:**
-**Q3:**
-**Q4:**
+### Krátkodobé
+- Úspěšně dodat OCE & Digital Workshop (Brno, Hotel Maximus)
+- Zajistit zapojení a adopci digitálních nástrojů u brand managerů a medical týmu
+- Dokončit Italy campaign v souladu s AIFA regulacemi
 
-## Aktuální focus (tento měsíc)
-_(na čem právě pracuješ)_
+### Střednědobé
+- Vybudovat reputaci jako OCE/digitální transformace expert v rámci Takeda CSEE
+- Systematizovat interní vzdělávání — opakovatelné workshopy, sdílené know-how
+- Zvýšit digitální gramotnost celého Takeda Czech týmu
 
-## Čeho se chceš zbavit
-_(co nechceš dělat, co tě brzdí)_
+### Průběžné priority
+- Zlepšovat kvalitu HCP komunikace — relevantnost, personalizace, compliance
+- Optimalizovat SFMC journey — automatizace, segmentace, měření
+- Propojovat digitální kanály do skutečného omnichannel přístupu
+
+## Čeho se chci zbavit
+- Manuální procesů, které lze automatizovat
+- Obsahu, který neprojde MLR — lepší prevence, ne opakované revize
+- Izolovaných kampaní bez návaznosti na journey
 
 ---
 
-*Vkládej do promptů pro strategická rozhodnutí nebo plánování.*
+*Vkládej do promptů pro strategické plánování, prioritizaci nebo roční review.*

@@ -1,26 +1,36 @@
 # Context
 
-Vše, co definuje tebe — kdo jsi, co umíš, jak komunikuješ, co chceš.
+Vše, co definuje Hanu — kdo je, co umí, jak komunikuje, co chce.
 
-Tento kontext vkládáš do AI promptů, aby výstupy seděly tvému stylu.
+Tento kontext vkládáš do AI promptů, aby výstupy seděly tvému stylu a realitě.
 
 ## Soubory
 
-| Soubor | Obsah |
-|--------|-------|
-| `expertise.md` | Tvoje odbornost, zkušenosti, silné stránky |
-| `goals.md` | Dlouhodobé i krátkodobé cíle |
-| `tone-of-voice.md` | Jak komunikuješ — styl, jazyk, co se ti líbí a nelíbí |
-| `email-examples/` | Ukázky skutečných e-mailů jako reference pro AI |
-| `bio.md` | Krátké bio pro různé účely (LinkedIn, prezentace, web) |
+| Soubor | Obsah | Kdy použít |
+|--------|-------|------------|
+| `ai-instructions.md` | **Hlavní instrukce pro AI** — jak Hanu oslovovat, jak odpovídat | Vždy jako systémový prompt |
+| `expertise.md` | Odbornost, tech stack, zkušenosti v Takeda/OCE | Strategická zadání, kampaně, copywriting |
+| `goals.md` | Profesní cíle, priority, zaměření | Plánování, prioritizace |
+| `tone-of-voice.md` | Komunikační styl, jazyk, co chci/nechci | Tvorba textů, emaily, copy |
+| `bio.md` | Bio v různých délkách | LinkedIn, prezentace, představení |
+| `email-examples/` | Ukázky e-mailů jako reference | Psaní emailů, HCP komunikace |
 
-## Jak kontext používat
-
-Před spuštěním agenta přidej relevantní část kontextu do promptu:
+## Rychlý start — prompt pro AI
 
 ```
-Zde je kontext o mně:
-[obsah z expertise.md nebo tone-of-voice.md]
+Přečti si instrukce jak pracovat s Hanou:
 
-Nyní udělej...
+[obsah ai-instructions.md]
+
+Kontext o Haně:
+[obsah expertise.md]
+
+Zadání: [tvůj úkol]
 ```
+
+## Jak aktualizovat
+
+- Po změně role nebo projektu → uprav `expertise.md` a `bio.md`
+- Po novém projektu → přidej do `goals.md`
+- Po zjištění nové preference → uprav `ai-instructions.md`
+- Po napsání dobrého emailu → přidej do `email-examples/`
