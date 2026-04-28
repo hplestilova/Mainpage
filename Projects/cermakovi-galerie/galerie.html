@@ -19,7 +19,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -31,7 +30,6 @@
     overflow-x: hidden;
   }
 
-  /* ── HERO ── */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -46,7 +44,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('project/uploads/photos-1777392603981.png');
+    background-image: url('15Wedding+photo+ideas+of+bride+and+groomjpg.png');
     background-size: cover;
     background-position: center 20%;
     opacity: 0.18;
@@ -84,11 +82,6 @@
     line-height: 0.95;
     color: var(--text);
     letter-spacing: -0.01em;
-  }
-
-  .hero-names em {
-    font-style: italic;
-    color: var(--text-light);
   }
 
   .hero-ampersand {
@@ -143,7 +136,6 @@
     animation: scrollPulse 2s ease-in-out infinite;
   }
 
-  /* ── GALLERY SECTION ── */
   .gallery-section {
     padding: 5rem 2rem 8rem;
     max-width: 1400px;
@@ -171,7 +163,6 @@
     color: var(--text-muted);
   }
 
-  /* Masonry grid */
   .masonry {
     columns: 3 300px;
     column-gap: 1.2rem;
@@ -193,9 +184,7 @@
     border-radius: 2px;
   }
 
-  .photo-item:hover img {
-    transform: scale(1.04);
-  }
+  .photo-item:hover img { transform: scale(1.04); }
 
   .photo-item::after {
     content: '';
@@ -206,9 +195,7 @@
     border-radius: 2px;
   }
 
-  .photo-item:hover::after {
-    background: rgba(42, 33, 24, 0.12);
-  }
+  .photo-item:hover::after { background: rgba(42, 33, 24, 0.12); }
 
   .photo-overlay {
     position: absolute;
@@ -221,9 +208,7 @@
     z-index: 2;
   }
 
-  .photo-item:hover .photo-overlay {
-    opacity: 1;
-  }
+  .photo-item:hover .photo-overlay { opacity: 1; }
 
   .photo-overlay svg {
     width: 32px;
@@ -232,7 +217,6 @@
     filter: drop-shadow(0 1px 4px rgba(0,0,0,0.4));
   }
 
-  /* ── LIGHTBOX ── */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -245,10 +229,7 @@
     transition: opacity 0.4s ease;
   }
 
-  .lightbox.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
 
   .lb-backdrop {
     position: absolute;
@@ -271,9 +252,7 @@
     transition: transform 0.4s ease;
   }
 
-  .lightbox.open .lb-content {
-    transform: scale(1);
-  }
+  .lightbox.open .lb-content { transform: scale(1); }
 
   .lb-content img {
     max-width: 90vw;
@@ -283,11 +262,7 @@
     box-shadow: 0 30px 80px rgba(0,0,0,0.5);
   }
 
-  .lb-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
+  .lb-actions { display: flex; gap: 1rem; align-items: center; }
 
   .lb-btn {
     display: flex;
@@ -308,11 +283,7 @@
     text-decoration: none;
   }
 
-  .lb-btn:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: white;
-  }
+  .lb-btn:hover { background: var(--gold); border-color: var(--gold); color: white; }
 
   .lb-close {
     position: fixed;
@@ -347,7 +318,6 @@
   .lb-prev { left: 1rem; }
   .lb-next { right: 1rem; }
 
-  /* ── MUSIC TOGGLE ── */
   .music-btn {
     position: fixed;
     bottom: 2rem;
@@ -367,30 +337,16 @@
     color: var(--gold);
   }
 
-  .music-btn:hover {
-    background: var(--gold);
-    color: white;
-    border-color: var(--gold);
-    transform: scale(1.05);
-  }
+  .music-btn:hover { background: var(--gold); color: white; border-color: var(--gold); transform: scale(1.05); }
+  .music-btn.playing .bars span { animation: musicBar 0.8s ease-in-out infinite alternate; }
 
-  .music-btn.playing .bars span {
-    animation: musicBar 0.8s ease-in-out infinite alternate;
-  }
-
-  .bars {
-    display: flex;
-    gap: 2px;
-    align-items: flex-end;
-    height: 16px;
-  }
+  .bars { display: flex; gap: 2px; align-items: flex-end; height: 16px; }
 
   .bars span {
     width: 3px;
     background: currentColor;
     border-radius: 1px;
     height: 6px;
-    transition: height 0.3s ease;
   }
 
   .bars span:nth-child(1) { height: 10px; animation-delay: 0s; }
@@ -398,7 +354,6 @@
   .bars span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
   .bars span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
 
-  /* ── FOOTER ── */
   footer {
     text-align: center;
     padding: 4rem 2rem;
@@ -420,7 +375,6 @@
     text-transform: uppercase;
   }
 
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -436,7 +390,6 @@
     to { height: 16px; }
   }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     .masonry { columns: 2 140px; }
     .lb-nav { display: none; }
@@ -445,7 +398,6 @@
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -465,103 +417,60 @@
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery-section">
   <div class="section-header">
     <h2>Naše vzpomínky</h2>
     <p>Klikněte na fotografii pro zobrazení</p>
   </div>
-
   <div class="masonry" id="gallery">
     <div class="photo-item" data-index="0">
-      <img src="project/uploads/photos-1777392603981.png" alt="Hanka &amp; Vítek — slavnostní oblouk">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="15Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="1">
-      <img src="project/uploads/photo1.png" alt="Hanka &amp; Vítek — objetí">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="1Wedding+photo+ideas+of+bride+and+groomjpg%20(1).png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="2">
-      <img src="project/uploads/photo2.png" alt="Hanka &amp; Vítek — arkáda">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="2Weddingphotoideasofbrideandgroomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="3">
-      <img src="project/uploads/photo3.png" alt="Hanka &amp; Vítek — kytice">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="3Weddingphotoideasofbrideandgroomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="4">
-      <img src="project/uploads/photo4.png" alt="Hanka &amp; Vítek — závoj">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="15Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="5">
-      <img src="project/uploads/photo5.png" alt="Hanka &amp; Vítek — tanec">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="16Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="6">
-      <img src="project/uploads/photo6.png" alt="Hanka &amp; Vítek — tabule">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="17Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="7">
-      <img src="project/uploads/photo7.png" alt="Hanka &amp; Vítek — dort">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="19Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
     <div class="photo-item" data-index="8">
-      <img src="project/uploads/photo8.png" alt="Hanka &amp; Vítek">
-      <div class="photo-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
-          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-        </svg>
-      </div>
+      <img src="10Wedding+photo+ideas+of+bride+and+groomjpg.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p class="footer-names">Hanka &amp; Vítek</p>
   <p>30. května 2026 &nbsp;·&nbsp; Čermákovi</p>
 </footer>
 
-<!-- MUSIC BUTTON -->
 <button class="music-btn" id="musicBtn" title="Hudba na pozadí" aria-label="Přehrát hudbu">
-  <div class="bars" id="bars">
-    <span></span><span></span><span></span><span></span>
-  </div>
+  <div class="bars"><span></span><span></span><span></span><span></span></div>
 </button>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <div class="lb-backdrop" id="lbBackdrop"></div>
   <button class="lb-close" id="lbClose" aria-label="Zavřít">
@@ -589,18 +498,17 @@
 
 <script>
 const photos = [
-  { src: 'project/uploads/photos-1777392603981.png', alt: 'Hanka & Vítek — slavnostní oblouk' },
-  { src: 'project/uploads/photo1.png', alt: 'Hanka & Vítek — objetí' },
-  { src: 'project/uploads/photo2.png', alt: 'Hanka & Vítek — arkáda' },
-  { src: 'project/uploads/photo3.png', alt: 'Hanka & Vítek — kytice' },
-  { src: 'project/uploads/photo4.png', alt: 'Hanka & Vítek — závoj' },
-  { src: 'project/uploads/photo5.png', alt: 'Hanka & Vítek — tanec' },
-  { src: 'project/uploads/photo6.png', alt: 'Hanka & Vítek — tabule' },
-  { src: 'project/uploads/photo7.png', alt: 'Hanka & Vítek — dort' },
-  { src: 'project/uploads/photo8.png', alt: 'Hanka & Vítek' },
+  { src: '15Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '1Wedding+photo+ideas+of+bride+and+groomjpg%20(1).png', alt: 'Hanka & Vítek' },
+  { src: '2Weddingphotoideasofbrideandgroomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '3Weddingphotoideasofbrideandgroomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '15Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '16Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '17Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '19Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
+  { src: '10Wedding+photo+ideas+of+bride+and+groomjpg.png', alt: 'Hanka & Vítek' },
 ];
 
-// ── LIGHTBOX ──
 let currentIndex = 0;
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
@@ -653,12 +561,9 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextPhoto();
 });
 
-// ── MUSIC TOGGLE ──
 let playing = false;
 const musicBtn = document.getElementById('musicBtn');
-let audioCtx = null;
-let gainNode = null;
-let oscillators = [];
+let audioCtx = null, gainNode = null, oscillators = [];
 
 function startMusic() {
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -666,8 +571,6 @@ function startMusic() {
   gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
   gainNode.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 2);
   gainNode.connect(audioCtx.destination);
-
-  // Gentle C major ambient chord
   [261.63, 329.63, 392, 523.25].forEach(freq => {
     const osc = audioCtx.createOscillator();
     osc.type = 'sine';
@@ -693,11 +596,9 @@ function stopMusic() {
 musicBtn.addEventListener('click', () => {
   playing = !playing;
   musicBtn.classList.toggle('playing', playing);
-  if (playing) startMusic();
-  else stopMusic();
+  if (playing) startMusic(); else stopMusic();
 });
 
-// ── SCROLL ANIMATIONS ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
