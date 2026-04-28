@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanka &amp; Vítek — 30. května 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --ivory: #f2ede4;
+    --warm-white: #fff9f4;
+    --gold: #c8a96e;
+    --gold-light: #e8d5ae;
+    --text: #2a2118;
+    --text-light: #7a6a58;
+    --text-muted: #b0a090;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('project/uploads/photos-1777392603981.png');
+    background-size: cover;
+    background-position: center 20%;
+    opacity: 0.18;
+    scale: 1.05;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--warm-white) 0%, transparent 30%, transparent 70%, var(--cream) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeUp 1.4s ease both;
+  }
+
+  .hero-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: 0.95;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-names em {
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  .hero-ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--gold);
+    display: block;
+    line-height: 1.2;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+  }
+
+  .hero-date {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-light);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 2s 0.8s ease both;
+  }
+
+  .scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── GALLERY SECTION ── */
+  .gallery-section {
+    padding: 5rem 2rem 8rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .section-header p {
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Masonry grid */
+  .masonry {
+    columns: 3 300px;
+    column-gap: 1.2rem;
+  }
+
+  .photo-item {
+    break-inside: avoid;
+    margin-bottom: 1.2rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .photo-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 2px;
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .photo-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(42, 33, 24, 0);
+    transition: background 0.4s ease;
+    border-radius: 2px;
+  }
+
+  .photo-item:hover::after {
+    background: rgba(42, 33, 24, 0.12);
+  }
+
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .photo-item:hover .photo-overlay {
+    opacity: 1;
+  }
+
+  .photo-overlay svg {
+    width: 32px;
+    height: 32px;
+    stroke: white;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.4));
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .lb-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 15, 10, 0.92);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  .lb-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    transform: scale(0.95);
+    transition: transform 0.4s ease;
+  }
+
+  .lightbox.open .lb-content {
+    transform: scale(1);
+  }
+
+  .lb-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+
+  .lb-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .lb-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.4rem;
+    background: transparent;
+    border: 1px solid rgba(200, 169, 110, 0.5);
+    color: var(--gold-light);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .lb-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: white;
+  }
+
+  .lb-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.3s ease;
+  }
+
+  .lb-close:hover { color: white; }
+
+  .lb-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    padding: 1rem;
+    transition: color 0.3s ease;
+    font-size: 1.5rem;
+  }
+
+  .lb-nav:hover { color: white; }
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+
+  /* ── MUSIC TOGGLE ── */
+  .music-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 500;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1px solid var(--gold-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    color: var(--gold);
+  }
+
+  .music-btn:hover {
+    background: var(--gold);
+    color: white;
+    border-color: var(--gold);
+    transform: scale(1.05);
+  }
+
+  .music-btn.playing .bars span {
+    animation: musicBar 0.8s ease-in-out infinite alternate;
+  }
+
+  .bars {
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+    height: 16px;
+  }
+
+  .bars span {
+    width: 3px;
+    background: currentColor;
+    border-radius: 1px;
+    height: 6px;
+    transition: height 0.3s ease;
+  }
+
+  .bars span:nth-child(1) { height: 10px; animation-delay: 0s; }
+  .bars span:nth-child(2) { height: 16px; animation-delay: 0.15s; }
+  .bars span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+  .bars span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--ivory);
+  }
+
+  footer .footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+
+  footer p {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes musicBar {
+    from { height: 4px; }
+    to { height: 16px; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .masonry { columns: 2 140px; }
+    .lb-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">Svatební galerie</p>
+    <h1 class="hero-names">
+      Hanka
+      <span class="hero-ampersand">&amp;</span>
+      Vítek
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-date">30. května 2026</p>
+  </div>
+  <div class="scroll-hint">
+    <span>Galerie</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="section-header">
+    <h2>Naše vzpomínky</h2>
+    <p>Klikněte na fotografii pro zobrazení</p>
+  </div>
+
+  <div class="masonry" id="gallery">
+    <div class="photo-item" data-index="0">
+      <img src="project/uploads/photos-1777392603981.png" alt="Hanka &amp; Vítek — slavnostní oblouk">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="1">
+      <img src="project/uploads/photo1.png" alt="Hanka &amp; Vítek — objetí">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="2">
+      <img src="project/uploads/photo2.png" alt="Hanka &amp; Vítek — arkáda">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="3">
+      <img src="project/uploads/photo3.png" alt="Hanka &amp; Vítek — kytice">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="4">
+      <img src="project/uploads/photo4.png" alt="Hanka &amp; Vítek — závoj">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="5">
+      <img src="project/uploads/photo5.png" alt="Hanka &amp; Vítek — tanec">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="6">
+      <img src="project/uploads/photo6.png" alt="Hanka &amp; Vítek — tabule">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="7">
+      <img src="project/uploads/photo7.png" alt="Hanka &amp; Vítek — dort">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="photo-item" data-index="8">
+      <img src="project/uploads/photo8.png" alt="Hanka &amp; Vítek">
+      <div class="photo-overlay">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-names">Hanka &amp; Vítek</p>
+  <p>30. května 2026 &nbsp;·&nbsp; Čermákovi</p>
+</footer>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn" id="musicBtn" title="Hudba na pozadí" aria-label="Přehrát hudbu">
+  <div class="bars" id="bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lb-backdrop" id="lbBackdrop"></div>
+  <button class="lb-close" id="lbClose" aria-label="Zavřít">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Předchozí">&#8592;</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Další">&#8594;</button>
+  <div class="lb-content">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-actions">
+      <a id="lbDownload" class="lb-btn" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Stáhnout
+      </a>
+      <button class="lb-btn" id="lbCloseBtn">Zavřít</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const photos = [
+  { src: 'project/uploads/photos-1777392603981.png', alt: 'Hanka & Vítek — slavnostní oblouk' },
+  { src: 'project/uploads/photo1.png', alt: 'Hanka & Vítek — objetí' },
+  { src: 'project/uploads/photo2.png', alt: 'Hanka & Vítek — arkáda' },
+  { src: 'project/uploads/photo3.png', alt: 'Hanka & Vítek — kytice' },
+  { src: 'project/uploads/photo4.png', alt: 'Hanka & Vítek — závoj' },
+  { src: 'project/uploads/photo5.png', alt: 'Hanka & Vítek — tanec' },
+  { src: 'project/uploads/photo6.png', alt: 'Hanka & Vítek — tabule' },
+  { src: 'project/uploads/photo7.png', alt: 'Hanka & Vítek — dort' },
+  { src: 'project/uploads/photo8.png', alt: 'Hanka & Vítek' },
+];
+
+// ── LIGHTBOX ──
+let currentIndex = 0;
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbDownload = document.getElementById('lbDownload');
+
+function openLightbox(index) {
+  currentIndex = index;
+  updateLightbox();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+  const photo = photos[currentIndex];
+  lbImg.src = photo.src;
+  lbImg.alt = photo.alt;
+  lbDownload.href = photo.src;
+  lbDownload.download = `hanka-vitek-${currentIndex + 1}.jpg`;
+}
+
+function prevPhoto() {
+  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+  updateLightbox();
+}
+
+function nextPhoto() {
+  currentIndex = (currentIndex + 1) % photos.length;
+  updateLightbox();
+}
+
+document.querySelectorAll('.photo-item').forEach(item => {
+  item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+});
+
+document.getElementById('lbBackdrop').addEventListener('click', closeLightbox);
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbCloseBtn').addEventListener('click', closeLightbox);
+document.getElementById('lbPrev').addEventListener('click', prevPhoto);
+document.getElementById('lbNext').addEventListener('click', nextPhoto);
+
+document.addEventListener('keydown', (e) => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') prevPhoto();
+  if (e.key === 'ArrowRight') nextPhoto();
+});
+
+// ── MUSIC TOGGLE ──
+let playing = false;
+const musicBtn = document.getElementById('musicBtn');
+let audioCtx = null;
+let gainNode = null;
+let oscillators = [];
+
+function startMusic() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  gainNode = audioCtx.createGain();
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 2);
+  gainNode.connect(audioCtx.destination);
+
+  // Gentle C major ambient chord
+  [261.63, 329.63, 392, 523.25].forEach(freq => {
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    osc.connect(gainNode);
+    osc.start();
+    oscillators.push(osc);
+  });
+}
+
+function stopMusic() {
+  if (gainNode) {
+    gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1);
+    setTimeout(() => {
+      oscillators.forEach(o => o.stop());
+      oscillators = [];
+      audioCtx.close();
+      audioCtx = null;
+    }, 1200);
+  }
+}
+
+musicBtn.addEventListener('click', () => {
+  playing = !playing;
+  musicBtn.classList.toggle('playing', playing);
+  if (playing) startMusic();
+  else stopMusic();
+});
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.photo-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity 0.7s ease ${i * 0.08}s, transform 0.7s ease ${i * 0.08}s`;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
